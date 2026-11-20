@@ -7,10 +7,12 @@ import type { OrderDTO, OrderFilters, OrderStatus } from "../dtos/order.dto";
 
 const QUERY_KEY = ['orders'];
 
-export function useOrders(filters: OrderFilters = {}) {
+export function useOrders(filters: OrderFilters = {}, refetchInterval?: number) {
   return useQuery({
     queryKey: [...QUERY_KEY, filters],
-    queryFn: () => OrderService.listAll(filters)
+    queryFn: () => OrderService.listAll(filters),
+    // permite que o Kanban busque novos pedidos periodicamente
+    refetchInterval
   });
 }
 
