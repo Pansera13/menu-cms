@@ -82,7 +82,6 @@ function SpotForm({ spot, onDone }: SpotFormProps) {
         <FieldError message={error} />
       </div>
 
-      {/* na criação a API sempre grava a mesa como ativa */}
       {spot && (
         <div className="flex items-center gap-3">
           <Switch id="spot-active" checked={active} onCheckedChange={setActive} />

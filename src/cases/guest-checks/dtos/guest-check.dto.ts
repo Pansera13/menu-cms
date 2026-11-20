@@ -9,7 +9,6 @@ export interface GuestCheckDTO {
   spot: SpotDTO;
 }
 
-// Item da listagem: a API soma os pedidos de cada comanda
 export interface GuestCheckSummaryDTO extends GuestCheckDTO {
   orderCount: number;
   total: number;

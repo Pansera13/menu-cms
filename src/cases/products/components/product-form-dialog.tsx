@@ -44,7 +44,6 @@ export function ProductFormDialog({ open, onOpenChange, product }: ProductFormDi
   )
 }
 
-// Valor usado no select para representar "sem categoria"
 const NO_CATEGORY = 'none';
 
 type ProductFormProps = {
@@ -70,7 +69,6 @@ function ProductForm({ product, onDone }: ProductFormProps) {
   const updateProduct = useUpdateProduct();
   const isPending = createProduct.isPending || updateProduct.isPending;
 
-  // a API só aceita vincular produtos a categorias ativas
   const categoryItems = [
     { value: NO_CATEGORY, label: 'Sem categoria' },
     ...categories

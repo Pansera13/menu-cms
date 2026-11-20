@@ -6,7 +6,6 @@ export interface CategoryDTO {
   active: boolean;
 }
 
-// Dados enviados para a API no cadastro e na edição
 export interface CategoryInput {
   name: string;
   icon: string | null;

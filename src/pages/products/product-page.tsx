@@ -14,7 +14,6 @@ import { useDeleteProduct, useProducts } from "@/cases/products/hooks/use-produc
 import type { ProductDTO } from "@/cases/products/dtos/product.dto";
 
 export function ProductPage() {
-  // o filtro fica na URL (?category=...), assim sobrevive a um recarregamento da página
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryId = searchParams.get('category') ?? undefined;
 

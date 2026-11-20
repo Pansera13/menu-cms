@@ -29,7 +29,6 @@ export function CategoryFormDialog({ open, onOpenChange, category }: CategoryFor
           <DialogTitle>{category ? 'Editar categoria' : 'Nova categoria'}</DialogTitle>
           <DialogDescription>Preencha os dados da categoria do cardápio.</DialogDescription>
         </DialogHeader>
-        {/* O formulário só é montado com o diálogo aberto, então o estado reinicia a cada abertura */}
         <CategoryForm category={category} onDone={() => onOpenChange(false)} />
       </DialogContent>
     </Dialog>

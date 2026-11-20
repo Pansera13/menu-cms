@@ -5,7 +5,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  // porta fixa para não conflitar com o menu-frontend (5173)
   server: {
     port: 5174,
   },

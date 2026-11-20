@@ -4,7 +4,6 @@ export interface ProductDTO {
   id: string;
   name: string;
   description: string | null;
-  // a API devolve colunas numeric do Postgres como texto
   price: string;
   picture: string | null;
   active: boolean;
@@ -13,7 +12,6 @@ export interface ProductDTO {
   category: CategoryDTO | null;
 }
 
-// Dados enviados para a API no cadastro e na edição
 export interface ProductInput {
   name: string;
   description: string;

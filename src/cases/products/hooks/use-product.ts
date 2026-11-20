@@ -8,7 +8,6 @@ const QUERY_KEY = ['products'];
 
 export function useProducts(categoryId?: string) {
   return useQuery({
-    // a categoria faz parte da chave: cada filtro tem seu próprio cache
     queryKey: [...QUERY_KEY, categoryId],
     queryFn: () => ProductService.listAll(categoryId)
   });
@@ -20,7 +19,6 @@ export function useCreateProduct() {
   return useMutation({
     mutationFn: (data: ProductInput) => ProductService.create(data),
     onSuccess: () => {
-      // invalida todas as listas de produtos, com ou sem filtro
       queryClient.invalidateQueries({ queryKey: QUERY_KEY });
       toast.success('Produto cadastrado com sucesso!');
     },

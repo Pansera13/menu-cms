@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { GuestCheckService } from "../services/guest-check.service";
 
-// Comandas são somente leitura no CMS: o backend abre a comanda no primeiro pedido da mesa
 
 export function useOpenedGuestChecks() {
   return useQuery({

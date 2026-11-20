@@ -11,7 +11,6 @@ export function useOrders(filters: OrderFilters = {}, refetchInterval?: number) 
   return useQuery({
     queryKey: [...QUERY_KEY, filters],
     queryFn: () => OrderService.listAll(filters),
-    // permite que o Kanban busque novos pedidos periodicamente
     refetchInterval
   });
 }
@@ -27,8 +26,6 @@ export function useUpdateOrderStatus() {
   return useMutation({
     mutationFn: ({ id, status }: UpdateStatusVariables) => OrderService.updateStatus(id, status),
 
-    // Atualização otimista: o novo status aparece na tela antes da resposta da API.
-    // Sem isso, o cartão do Kanban "voltaria" para a coluna antiga até a lista recarregar.
     onMutate: async ({ id, status }) => {
       await queryClient.cancelQueries({ queryKey: QUERY_KEY });
       const previous = queryClient.getQueriesData<OrderDTO[]>({ queryKey: QUERY_KEY });
@@ -44,13 +41,11 @@ export function useUpdateOrderStatus() {
       toast.success(`Status alterado para "${ORDER_STATUS_LABEL[status]}".`);
     },
 
-    // Se a API recusar, desfaz a alteração otimista
     onError: (error, _variables, context) => {
       context?.previous.forEach(([queryKey, data]) => queryClient.setQueryData(queryKey, data));
       toast.error(getApiErrorMessage(error));
     },
 
-    // Com sucesso ou erro, busca de novo os dados gravados no banco
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEY });
     }

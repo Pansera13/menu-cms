@@ -14,7 +14,6 @@ export function GuestCheckDetailPage() {
   const { id = '' } = useParams();
 
   const guestCheck = useGuestCheck(id);
-  // os pedidos vêm de uma consulta própria: ao trocar o status, só ela é recarregada
   const orders = useOrders({ guestCheckId: id });
 
   const total = (orders.data ?? []).reduce((sum, order) => sum + Number(order.total), 0);

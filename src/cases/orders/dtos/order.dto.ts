@@ -6,7 +6,6 @@ export type OrderStatus = 'NEW' | 'PREPARING' | 'READY' | 'DELIVERED';
 export interface OrderItemDTO {
   id: string;
   quantity: number;
-  // colunas numeric chegam como texto
   price: string;
   subtotal: string;
   product: ProductDTO;

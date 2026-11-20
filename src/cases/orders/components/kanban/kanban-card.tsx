@@ -9,7 +9,6 @@ type KanbanCardProps = {
 }
 
 export function KanbanCard({ order }: KanbanCardProps) {
-  // o id do pedido identifica o cartão arrastado no onDragEnd do quadro
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
     id: order.id
   });

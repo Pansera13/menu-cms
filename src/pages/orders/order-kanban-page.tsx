@@ -7,13 +7,11 @@ import { EmptyState } from "@/components/feedback/empty-state";
 import { KanbanBoard } from "@/cases/orders/components/kanban/kanban-board";
 import { useOrders } from "@/cases/orders/hooks/use-order";
 
-// Intervalo para buscar novos pedidos feitos pelas mesas (30 segundos)
 const REFRESH_INTERVAL = 30_000;
 
 export function OrderKanbanPage() {
   const { data = [], isLoading, isError, error, refetch, isFetching } = useOrders({}, REFRESH_INTERVAL);
 
-  // o quadro mostra apenas pedidos de comandas que ainda estão abertas
   const orders = data.filter((order) => order.guestCheck.status === 'OPENED');
 
   return (

@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/select";
 import { useCategories } from "@/cases/categories/hooks/use-category";
 
-// Valor usado no select para representar "todas as categorias"
 const ALL = 'all';
 
 type ProductCategoryFilterProps = {

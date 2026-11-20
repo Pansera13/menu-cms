@@ -33,7 +33,6 @@ export function useUpdateSpot() {
     mutationFn: ({ id, data }: { id: string; data: SpotInput }) => SpotService.update(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEY });
-      // as comandas exibem o nome da mesa
       queryClient.invalidateQueries({ queryKey: ['guest-checks'] });
       toast.success('Mesa atualizada com sucesso!');
     },

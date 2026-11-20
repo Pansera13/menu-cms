@@ -1,6 +1,5 @@
 import { isAxiosError } from 'axios';
 
-// Extrai a mensagem de erro devolvida pela API NestJS
 export function getApiErrorMessage(error: unknown): string {
   if (isAxiosError(error)) {
     if (!error.response) {

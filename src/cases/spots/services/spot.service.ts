@@ -11,7 +11,6 @@ export const SpotService = {
   },
 
   async create(data: SpotInput): Promise<SpotDTO> {
-    // o cadastro de mesa na API aceita apenas o nome; toda mesa nasce ativa
     const result = await api.post<SpotDTO>(ENDPOINT, { name: data.name });
     return result.data;
   },

@@ -11,7 +11,6 @@ type KanbanBoardProps = {
 export function KanbanBoard({ orders }: KanbanBoardProps) {
   const updateStatus = useUpdateOrderStatus();
 
-  // o arraste só começa depois de mover 5px, para não confundir com um clique
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
   );
@@ -24,7 +23,6 @@ export function KanbanBoard({ orders }: KanbanBoardProps) {
     const newStatus = over.id as OrderStatus;
     const order = orders.find((item) => item.id === orderId);
 
-    // só grava na API se o cartão realmente mudou de coluna
     if (order && order.status !== newStatus) {
       updateStatus.mutate({ id: orderId, status: newStatus });
     }

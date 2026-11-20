@@ -33,7 +33,6 @@ export function useUpdateCategory() {
     mutationFn: ({ id, data }: { id: string; data: CategoryInput }) => CategoryService.update(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEY });
-      // os produtos exibem o nome da categoria, então também são recarregados
       queryClient.invalidateQueries({ queryKey: ['products'] });
       toast.success('Categoria atualizada com sucesso!');
     },

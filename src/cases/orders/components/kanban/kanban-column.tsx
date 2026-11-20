@@ -10,7 +10,6 @@ type KanbanColumnProps = {
 }
 
 export function KanbanColumn({ status, orders }: KanbanColumnProps) {
-  // o status é o id da área de soltura: ao soltar aqui, o pedido recebe este status
   const { setNodeRef, isOver } = useDroppable({ id: status });
 
   return (
