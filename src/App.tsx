@@ -1,5 +1,14 @@
+import { Navigate, Route, Routes } from "react-router-dom"
+import { AppLayout } from "./components/layout/app-layout"
+
 function App() {
-  return <h1 className="p-6 text-2xl font-semibold">MATER BURGUER - CMS</h1>
+  return (
+    <Routes>
+      <Route element={<AppLayout />}>
+        <Route index element={<Navigate to="categories" replace />} />
+      </Route>
+    </Routes>
+  )
 }
 
 export default App
