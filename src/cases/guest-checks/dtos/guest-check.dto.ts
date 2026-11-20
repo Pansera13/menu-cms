@@ -1,0 +1,16 @@
+import type { SpotDTO } from "@/cases/spots/dtos/spot.dto";
+
+export type GuestCheckStatus = 'OPENED' | 'CLOSED';
+
+export interface GuestCheckDTO {
+  id: string;
+  createdAt: string;
+  status: GuestCheckStatus;
+  spot: SpotDTO;
+}
+
+// Item da listagem: a API soma os pedidos de cada comanda
+export interface GuestCheckSummaryDTO extends GuestCheckDTO {
+  orderCount: number;
+  total: number;
+}
